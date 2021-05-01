@@ -44,6 +44,7 @@ sol = Solution()
 #print(sol.threeSum(nums = [0,0,0]))
 #print(sol.threeSum(nums = [-1,0,1,2,-1,-4,-2,-3,3,0,4]))
 #print(sol.threeSum(nums = [-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6]))
+#test asd
 print(sol.threeSum(nums = [-2,0,0,2,2]))
 
 print([ (i,val) for i,val in enumerate(sol.nums)])
