@@ -1,0 +1,77 @@
+#Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def sortList(self, head: ListNode) -> ListNode:
+        def next_node(curr_in, steps):
+            curr = curr_in
+            for i in range(steps):
+                if curr is not None and curr.next is not None:
+                    curr = curr.next
+                else:
+                    return None
+            return curr
+
+        def print_node(head):
+            print("start")
+            while head is not None:
+                print(head.val)
+                head = head.next
+
+
+        step = 1
+        counter = 0
+        dummy = ListNode(val = 0)
+        while True:
+            l = head
+            r = next_node(l,step)
+
+            if r is None:
+                return dummy.next 
+            l_ct = step
+            r_ct = step
+            curr = dummy
+
+            while l is not None:
+                print("step",step, "left", left.val)
+                print_node(dummy.next)
+                while l_ct > 0 or r_ct > 0:
+                    counter += 1
+                    if l_ct > 0 and r_ct > 0:
+                        if l.val < r.val:
+                            curr.next, l, l_ct = l, l.next, l_ct - 1
+                        else:
+                            curr.next, r, r_ct = r, r.next, r_ct - 1
+                    elif l_ct == 0 and r_ct != 0:
+                        curr.next, r, r_ct = r, r.next, r_ct - 1
+                        r_ct = 0 if r is None else r_ct
+                    elif r_ct == 0 and l_ct != 0:
+                        curr.next, l, l_ct = l, l.next, l_ct - 1
+
+
+                    curr = curr.next
+
+                l = r
+                r = next_node(l,step)
+                l_ct = step
+                r_ct = step if r is not None else 0
+                curr.next = None
+
+            step *= 2
+        print(counter)
+
+
+n5 = ListNode(val = -1)
+n4 = ListNode(val = 5, next = n5)
+n3 = ListNode(val = 3, next = n4)
+n2 = ListNode(val = 4, next = n3)
+head = ListNode(val = 0, next = n2)
+
+sol = Solution()
+ans = sol.sortList(head)
+while ans is not None:
+    print(ans.val)
+    ans = ans.next
