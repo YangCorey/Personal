@@ -1,0 +1,8 @@
+from typing import List
+class Solution:
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
+        intervals.sort(key = lambda x: x[0])
+        print(intervals)
+sol = Solution()
+
+sol.minMeetingRooms(intervals = [[5,10], [0,30], [15,20]])
